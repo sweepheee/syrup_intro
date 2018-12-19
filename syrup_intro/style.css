@@ -1,0 +1,134 @@
+@font-face {
+  font-family: 'HSGyoulnoonkot';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/HSGyoulnoonkot.woff') format('woff');
+  font-weight: normal; font-style: normal;
+}
+@font-face { font-family: 'BMJUA'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'SDMiSaeng'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SDMiSaeng.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+nav ul a {
+  font-family: 'SDMiSaeng';
+  font-size: 1.5em;
+  font-weight: 100;
+  color: white
+}
+
+a:active, a:link, a:visited {
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.intro {
+  width: 100%;
+  height: 35px;
+  background-color: black;
+}
+
+nav {
+  display: none;
+  width: 100vw;
+  height: 40px;
+  background: transparent;
+  font-size: 15px;
+  font-weight: bold;
+  position: relative;
+}
+
+nav ul {
+  display: inline-block;
+  list-style: none;
+  float: right;
+  margin-right: 30px;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 50px;
+}
+
+@media screen and (min-width: 764px) {
+  nav {
+    display: block;
+  }
+
+}
+
+.wrapper {
+  margin:0;
+  min-height: 100%;
+  background-image: url("starcraft22.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.container {
+  position: relative;
+  top: 50px;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'HSGyoulnoonkot';
+  color:white;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-columns: 1fr;
+  grid-template-rows: 55vh;
+  grid-auto-rows: 55vh;
+  grid-auto-flow: column;
+  grid-gap: 50px;
+  align-self: center;
+}
+
+.syrup:nth-child(2) {
+  font-size: 7em;
+}
+.syrup button {
+  position: relative;
+  top: -100px;
+  border: 1px solid #89D671;
+  border-radius: 5px;
+  font-size: 20px;
+  width: 200px;
+  height: 50px;
+  background: transparent;
+}
+
+.syrup button:hover {
+  background: #89D671;
+}
+
+.syrup button a {
+  color: #89D671;
+}
+
+.syrup button a:hover {
+  color: whitesmoke;
+}
+
+@media screen and (min-width: 764px) {
+  .container {
+    top: 150px;
+  }
+  .syrup:nth-child(2) {
+    font-size: 9em;
+    background: #55ffaa;
+    background: -webkit-linear-gradient(left, #89D671, #7179D6);
+    background:    -moz-linear-gradient(right, #89D671, #7179D6);
+    background:      -o-linear-gradient(right, #89D671, #7179D6);
+    background:         linear-gradient(to right, #89D671, #7179D6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+  }
+}
