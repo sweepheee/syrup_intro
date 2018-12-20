@@ -151,6 +151,7 @@ nav ul li {
 }
 
 .practicegame {
+  font-family: 'S-CoreDream-3Light';
   display: relative;
   text-align: center;
   padding-top: 100px;
@@ -162,9 +163,9 @@ nav ul li {
 }
 
 .shown {
-  -webkit-animation: fadein 2s ease-in alternate forwards;
-  -moz-animation: fadein 2s ease-in alternate forwards;
-  animation: fadein 2s ease-in alternate forwards;
+  -webkit-animation: fadein 1s ease-in alternate forwards;
+  -moz-animation: fadein 1s ease-in alternate forwards;
+  animation: fadein 1s ease-in alternate forwards;
 }
 
 @-webkit-keyframes fadein {
