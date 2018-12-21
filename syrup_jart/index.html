@@ -50,14 +50,14 @@
     }
     slide();
     setInterval(slide, 3000);
-
   </script>
 
   <div class="contents">
     <div class="article">
       <div class="show-on-scroll">
+        <span class="farti__high">#CONTENTS</span>
         <p class="farti">연습게임과 커뮤니티 활성화!</p>
-        <span>골플다 라이트유저 연습게임, 늘 시끄러운 카카오톡, 관리 고인물의 디스코드운영<br>같이 즐겨요!</span>
+        <span class="farti__low">골플다 라이트유저 연습게임, 늘 시끄러운 카카오톡, 관리 고인물의 디스코드운영<br>같이 즐겨요!</span>
         <div class="contents__grid">
           <div class="contents__item"><div class="item__in"><p>연습게임</p></div></div>
           <div class="contents__item"><div class="item__in"><p>오픈채팅</p></div></div>
@@ -75,6 +75,240 @@
       if(window.scrollY >= 600) el.classList.add("shown");
       else el.classList.remove("shown");
     });
+  </script>
+
+  <div class="information">
+    <div class="infor__bg">
+      <div class="infor">
+        <span class="infor__text__high">#PRACTIVE</span><br><br><br>
+        <span class="infor__text">라이트유저<br>연습게임</span><br><br><br>
+        <span class="infor__text__low">클랜원의 대부분이 라이트유저로 <br>잡금이라도 연습게임이 활발하게 돌아갑니다</span><br>
+        <button class="inforBtn" onclick="ing()">보러 가기</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    var ing = function() {
+      alert("ing....");
+    }
+    window.addEventListener("scroll", function() {
+      var el = document.querySelector(".infor");
+      console.log(el);
+      if(window.scrollY >= 1800) el.classList.add("shown");
+      else el.classList.remove("shown");
+    });
+
+  </script>
+
+  <div class="join">
+    <div class="join__bg">
+      <div class="join__slider">
+        <div class="select__join">
+          <div class="pros__item">
+            <span class="pros__text__high">#JOIN</span><br><br><br><br>
+            <span class="pros__text">회원가입하기</span><br>
+            <div class="select__container">
+              <div class="select__items">
+                <img src="img/discord.svg" alt="" width="350%"><br>
+              </div>
+              <div class="select__items">
+                <img src="img/chat.svg" alt="" width="80%;"><br>
+              </div>
+              <div class="select__items">
+                <img src="img/galaxy.svg" alt="" width="350%;">
+              </div>
+            </div>
+          </div>
+          <div class="join__dis">
+            <div class="dis__items">
+              <img src="img/discord1.png" alt="" width="1024px"><br><br>
+              <span>디스코드를 <a href="https://discordapp.com/">다운로드</a>받습니다.<br><br>
+                <button class="dis__btn" onclick="dis__next()">다음</button></span>
+            </div>
+            <div class="dis__items">
+              <img src="img/discord3.png" alt="" width="950px"><br>
+              <span>스탭 친구추가 후 가입문의주세요.<br>
+                스탭 : 쿼파치#3762, 학처럼 날아올라라#6563, Hanu#5495, Stelle#5283, 메이로#7545<br>
+                <br><button class="dis__btn" onclick="dis__back()">이전</button>
+              <button class="dis__btn__reset" onclick="back__join()">처음으로</button></span>
+            </div>
+          </div>
+          <div class="join__ka">
+            <div class="ka__items">
+              <img src="img/join_ka.png" alt="">
+              <span class="jk_span_high"><a href=https://open.kakao.com/o/gj9tP3S>#카카오톡 오픈채팅 링크</a></span><br><br><br>
+              <span class="jk_span_low">해당 카카오톡 오픈채팅은 오로지 <br>가입문의를 목적으로 개설되어 스탭들만 상주하고 있습니다.
+              <br>친목질에 거부감이 있는 분이나 익명을 원하시는 분들<br>
+                  모두 부담없이 문의해주세요.<br>
+                <br><button class="dis__btn__reset" onclick="ka_reset()">처음으로</button></span>
+            </div>
+          </div>
+          <div class="join__ingame">
+            <div class="ingame__items">
+              <img src="img/in1.jpg" alt=""><br><button onclick="igNext()" class="dis__btn">다음</button>
+              <div class="back_to_first" onclick="back_to_first()">처<br>음<br>으<br>로</div>
+            </div>
+            <div class="ingame__items">
+              <img src="img/in2.jpg" alt="" height="700px;"><br>
+              <button onclick="igPrevious()" class="dis__btn">이전</button>&nbsp;<button onclick="igNext()" class="dis__btn">다음</button>
+              <div class="back_to_first" onclick="back_to_first()">처<br>음<br>으<br>로</div>
+            </div>
+            <div class="ingame__items">
+              <img src="img/in3.jpg" alt=""><br>
+              <button onclick="igPrevious()" class="dis__btn">이전</button>&nbsp;<button onclick="igNext()" class="dis__btn">다음</button>
+              <div class="back_to_first" onclick="back_to_first()">처<br>음<br>으<br>로</div>
+            </div>
+            <div class="ingame__items">
+              <img src="img/in4.jpg" alt="" width="1024px"><br>
+              <button onclick="igPrevious()" class="dis__btn">이전</button>&nbsp;<button onclick="igNext()" class="dis__btn">다음</button>
+              <div class="back_to_first" onclick="back_to_first()">처<br>음<br>으<br>로</div>
+            </div>
+            <div class="ingame__items">
+              <img src="img/bliz1.png" alt="" width="900px"><br>
+              <button onclick="igPrevious()" class="dis__btn">이전</button>&nbsp;<button onclick="igNext()" class="dis__btn">다음</button>
+              <div class="back_to_first" onclick="back_to_first()">처<br>음<br>으<br>로</div>
+            </div>
+            <div class="ingame__items">
+              <img src="img/bliz2.png" alt="" width="900px" ><br>
+              <button onclick="igPrevious()" class="dis__btn">이전</button>&nbsp;<button onclick="igNext()" class="dis__btn">다음</button>
+              <div class="back_to_first" onclick="back_to_first()">처<br>음<br>으<br>로</div>
+            </div>
+            <div class="ingame__items">
+              <img src="img/bliz3.png" alt="" width="500px"><br><button onclick="igPrevious()" class="dis__btn">이전</button>
+              <div class="back_to_first" onclick="back_to_first()">처<br>음<br>으<br>로</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const o1 = "opacity1";
+    const o0 = "opacity0";
+    const aniShow = "aniShow";
+    const kaShow = "kaShow";
+    const igShow = "igShow";
+    const igUnShow = "igUnShow";
+    const firstScreen = document.querySelector(".select__items:first-child");
+    const secondScreen = document.querySelector(".select__items:nth-child(2)");
+    const thirdScreen = document.querySelector(".select__items:nth-child(3)");
+    const container = document.querySelector(".pros__item");
+    const disFirst = document.querySelector(".dis__items:first-child");
+    const disSecond = document.querySelector(".dis__items:nth-child(2)");
+    const kaFirst = document.querySelector(".ka__items");
+    const ingame = document.querySelector(".ingame__items:first-child");
+    const dis_next = document.getElementsByClassName("dis__next:first-child");
+    console.log(firstScreen);
+
+    firstScreen.onclick = function() {clicked()}
+    secondScreen.onclick = function() {clicked2()}
+    thirdScreen.onclick = function() {clicked3()}
+
+    function clicked() {
+      const o1set = document.querySelector(".opacity1");
+      if(o1set) {
+        container.classList.remove(o1);
+      }
+      container.classList.add(o0);
+      disFirst.classList.add(aniShow);
+    }
+
+    function clicked2() {
+      const o1set = document.querySelector(".opacity1");
+      if(o1set) {
+        container.classList.remove(o1);
+      }
+      container.classList.add(o0);
+      kaFirst.classList.add(kaShow);
+    }
+
+    function clicked3() {
+      const o1set = document.querySelector(".opacity1");
+      if(o1set) {
+        container.classList.remove(o1);
+      }
+      container.classList.add(o0);
+      ingame.classList.add(igShow);
+    }
+
+
+
+    function dis__next() {
+      disFirst.classList.remove(aniShow);
+      disSecond.classList.add(aniShow);
+    }
+
+    function dis__back() {
+      disSecond.classList.remove(aniShow);
+      disFirst.classList.add(aniShow);
+    }
+
+    function back__join() {
+      disSecond.classList.remove(aniShow);
+      container.classList.add(o1);
+      setTimeout(function() {
+        container.classList.remove(o0);
+      }, 500);
+    }
+
+    function ka_reset() {
+      kaFirst.classList.remove(kaShow);
+      container.classList.add(o1);
+      setTimeout(function() {
+        container.classList.remove(o0);
+      }, 500);
+    }
+
+    function igNext() {
+      const currentIgNext = document.querySelector(`.${igShow}`);
+      if(currentIgNext) {
+        currentIgNext.classList.add(igUnShow);
+        setTimeout(function() {
+          currentIgNext.classList.remove(igShow);
+          currentIgNext.classList.remove(igUnShow);
+        }, 500);
+        const nextIgNext = currentIgNext.nextElementSibling;
+        if(nextIgNext) {
+          nextIgNext.classList.add(igShow);
+        }else {
+          ingame.classList.add(igShow);
+        }
+      }else {
+        ingame.classList.add(igShow);
+      }
+    }
+
+    function igPrevious() {
+      const currentIgNext = document.querySelector(`.${igShow}`);
+      if(currentIgNext) {
+        currentIgNext.classList.add(igUnShow);
+        setTimeout(function() {
+          currentIgNext.classList.remove(igShow);
+          currentIgNext.classList.remove(igUnShow);
+        }, 500);
+        const previousIgNext = currentIgNext.previousElementSibling;
+        if(previousIgNext) {
+          previousIgNext.classList.add(igShow);
+        }else {
+          ingame.classList.add(igShow);
+        }
+      }else {
+        ingame.classList.add(igShow);
+      }
+    }
+
+    function back_to_first() {
+      const currentIgNext = document.querySelector(`.${igShow}`);
+      if(currentIgNext) {
+        currentIgNext.classList.add(igUnShow);
+        setTimeout(function() {
+          container.classList.add(o1);
+          currentIgNext.classList.remove(igShow);
+          currentIgNext.classList.remove(igUnShow);
+        }, 500);
+      }
+    }
   </script>
 </body>
 </html>

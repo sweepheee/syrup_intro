@@ -25,7 +25,7 @@ nav ul {
   margin: 0;
   padding: 0;
   position: relative;
-  top: 70vh;
+  top: 65vh;
   left: 30px;
 }
 
@@ -180,6 +180,7 @@ nav ul li {
 
 
 /* contents영역 */
+
 .contents {
   margin: 0;
   padding: 0;
@@ -201,15 +202,25 @@ nav ul li {
   opacity: 0;
 }
 
+.farti__high {
+  font-size: 2em;
+  border-bottom: 1px solid black;
+}
+
 .farti {
+  position: relative;
+  top: -50px;
   font-weight: 100;
   font-size: 4em;
 }
 
 .show-on-scroll span {
-  font-size: 2em;
   position: relative;
   top:-50px;
+}
+
+.farti__low {
+  font-size: 1.5em;
 }
 
 .contents__grid {
@@ -293,6 +304,16 @@ nav ul li {
   100% {top: -50px;}
 }
 
+@-webkit-keyframes upani {
+  0% {top: 0px;}
+  100% {top: -50px;}
+}
+
+@-moz-keyframes upani {
+  0% {top: 0px;}
+  100% {top: -50px;}
+}
+
 
 .shown {
   -webkit-animation: fadein 0.5s ease-in forwards;
@@ -319,4 +340,503 @@ nav ul li {
   .contents__grid {
     display: grid;
   }
+}
+
+
+/* information영역 */
+
+.information {
+  min-height: 100vh;
+}
+
+.blur5 {
+  filter: blur(2px);
+}
+
+.infor__bg {
+  z-index: 0;
+  min-height: 100vh;
+  background-image: url("../img/pg1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: grayscale(50%);
+  text-align: center;
+}
+
+.infor {
+  position: relative;
+  opacity: 0;
+}
+
+.infor__text__high {
+  font-family: 'GyeonggiTitleM';
+  top: 20vh;
+  position: relative;
+  color: white;
+  font-size: 2em;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.infor__text {
+  font-family: 'GyeonggiTitleM';
+  line-height: 90px;
+  top: 25vh;
+  position: relative;
+  color: white;
+  font-size: 4em;
+}
+
+.infor__text__low {
+  font-family: 'GyeonggiTitleM';
+  line-height: 25px;
+  top: 30vh;
+  position: relative;
+  color: white;
+  font-size: 1.5em;
+}
+
+.inforBtn {
+  position: relative;
+  top: 35vh;
+  border: 1px solid white;
+  width: 150px;
+  background: transparent;
+  color: white;
+  height: 50px;
+  font-size: 15px;
+}
+
+.inforBtn:hover {
+  cursor: pointer;
+  -webkit-animation: fillBtn 0.5s ease-in-out forwards;
+  -moz-animation: fillBtn 0.5s ease-in-out forwards;
+  animation: fillBtn 0.5s ease-in-out forwards;
+}
+
+@keyframes fillBtn {
+  0% {width: 150px}
+  100% {width: 250px; background-color: black; color: white;}
+}
+
+@-webkit-keyframes fillBtn {
+  0% {width: 150px}
+  100% {width: 250px; background-color: black; color: white;}
+}
+
+@-moz-keyframes fillBtn {
+  0% {width: 150px}
+  100% {width: 250px; background-color: black; color: white;}
+}
+
+
+
+
+
+/* join영역 */
+
+.join {
+  min-height: 100vh;
+}
+
+.join__bg {
+  background-color: #330000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 400'%3E%3Cdefs%3E%3CradialGradient id='a' cx='396' cy='281' r='514' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23D18'/%3E%3Cstop offset='1' stop-color='%23330000'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='400' y1='148' x2='400' y2='333'%3E%3Cstop offset='0' stop-color='%23FA3' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23FA3' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='400'/%3E%3Cg fill-opacity='0.4'%3E%3Ccircle fill='url(%23b)' cx='267.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='532.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='400' cy='30' r='300'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.join__slider {
+  position: relative;
+  min-height: 60vh;
+  left: 0;
+}
+
+.join__slider__item {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: absolute;
+  top: -400px;
+  z-index: 0;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+  transform: scale(0.9);
+}
+
+.join__showing {
+  z-index: 1;
+  opacity: 1;
+  transform: none;
+}
+
+.select__join {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+  top: -100px;
+  transition: all .5s ease-in-out;
+  transform: scale(0.9);
+  text-align: center;
+}
+
+.pros__text__high {
+  font-family: 'BMDOHYEON';
+  font-size: 2em;
+  border-bottom: 1px solid white;
+  position: relative;
+  top: 50px;
+}
+
+.pros__text {
+  font-family: 'BMDOHYEON';
+  font-size: 4em;
+  position: relative;
+  top: 55px;
+}
+
+.select__container {
+  margin: 0 auto;
+}
+
+.select__items {
+  position: relative;
+  top: 150px;
+  display :inline-block;
+  margin-left: 100px;
+  text-align: center;
+}
+
+
+.select__items:hover {
+  cursor: pointer;
+  animation: upanddown 2s ease-in-out infinite;
+  -webkit-animation: upanddown 2s ease-in-out infinite;
+  -moz-animation: upanddown 2s ease-in-out infinite;
+}
+
+@keyframes upanddown {
+  0% {top: 150px;}
+  50% {top: 100px;}
+  100% {top: 150px;}
+}
+@-webkit-keyframes upanddown {
+  0% {top: 150px;}
+  50% {top: 100px;}
+  100% {top: 150px;}
+}
+@-moz-keyframes upanddown {
+  0% {top: 150px;}
+  50% {top: 100px;}
+  100% {top: 150px;}
+}
+
+.select__items:first-child {
+  left: -300px;
+}
+
+.select__items:nth-child(2) {
+  left: 50px;
+}
+
+.opacity0 {
+  position: relative;
+  animation: o0 0.5s ease-in-out forwards;
+  -webkit-animation: o0 0.5s ease-in-out forwards;
+  -moz-animation: o0 0.5s ease-in-out forwards;
+}
+
+@keyframes o0 {
+  from {opacity: 1; left: 0px; }
+  to {opacity: 0; left: 30px; display: none; visibility: hidden;}
+}
+
+@-webkit-keyframes o0 {
+  from {opacity: 1}
+  to {opacity: 0; display: none; visibility: hidden;}
+}
+
+@-moz-keyframes o0 {
+  from {opacity: 1}
+  to {opacity: 0; display: none; visibility: hidden;}
+}
+
+.opacity1 {
+  animation: o1 0.5s ease-in-out forwards;
+  -webkit-animation: o1 0.5s ease-in-out forwards;
+  -moz-animation: o1 0.5s ease-in-out forwards;
+}
+
+@keyframes o1 {
+  from {opacity: 0;}
+  to {opacity: 1; }
+}
+
+.filterGrayScale {
+  filter: grayscale(100%);
+}
+
+.dis__items {
+  position: absolute;
+  top: 250px;
+  font-size: 1.5em;
+  font-family: 'BMDOHYEON';
+  font-weight: 100;
+  display: none;
+}
+
+.join__dis a:link, a:hover, a:visited, a:active {
+  text-decoration: none;
+  color: #3f51b5;
+  border-bottom: 3px solid #3f51b5;
+}
+
+.dis__unshow {
+  display: none;
+}
+
+.aniUnShow {
+  animation: aniUnShow 0.5s ease-in-out forwards;
+  -webkit-animation: aniUnShow 0.5s ease-in-out forwards;
+  -moz-animation: aniUnShow 0.5s ease-in-out forwards;
+}
+
+@keyframes aniUnShow {
+  0% {opacity:1; left: 750px;}
+  100% {opacity: 0; left: -1500px;}
+}
+
+@-webkit-keyframes aniUnShow {
+  0% {opacity:1; left: 750px;}
+  100% {opacity: 0; left: -1500px;}
+}
+
+@-moz-keyframes aniUnShow {
+  0% {opacity:1; left: 750px;}
+  100% {opacity: 0; left: -1500px;}
+}
+
+.aniShow {
+  opacity: 0;
+  left: 550px;
+  display: block;
+  animation: aniShow 0.5s ease-in-out 0.5s forwards;
+  -webkit-animation: aniShow 0.5s ease-in-out 0.5s forwards;
+  -moz-animation: aniShow 0.5s ease-in-out 0.5s forwards;
+}
+
+@keyframes aniShow {
+  0% {opacity: 0;}
+  100% {opacity: 1; display: block;}
+}
+
+@-webkit-keyframes aniShow {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@-moz-keyframes aniShow {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+.dis__btn {
+  width: 150px;
+  height: 50px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+.dis__btn:hover {
+  animation: disBtnAni 0.5s ease-in-out alternate forwards;
+  -webkit-animation: disBtnAni 0.5s ease-in-out alternate forwards;
+  -moz-animation: disBtnAni 0.5s ease-in-out alternate forwards;
+}
+
+@keyframes disBtnAni {
+  0% {width: 150px; background-color: transparent;}
+  100% {width: 200px; background-color: white; color: black;}
+}
+
+@-webkit-keyframes disBtnAni {
+  0% {width: 150px; background-color: transparent;}
+  100% {width: 200px; background-color: white; color: black;}
+}
+
+@-moz-keyframes disBtnAni {
+  0% {width: 150px; background-color: transparent;}
+  100% {width: 200px; background-color: white; color: black;}
+}
+
+
+.dis__btn__reset {
+  width: 150px;
+  height: 50px;
+  background-color: transparent;
+  border: 1px solid #ffeb3b;
+  color: #ffeb3b;
+}
+
+.dis__btn__reset:hover {
+  animation: disRBtnAni 0.5s ease-in-out alternate forwards;
+  -webkit-animation: disRBtnAni 0.5s ease-in-out alternate forwards;
+  -moz-animation: disRBtnAni 0.5s ease-in-out alternate forwards;
+}
+
+@keyframes disRBtnAni {
+  0% {width: 150px; background-color: transparent;}
+  100% {width: 200px; background-color: #ffeb3b; color: black;}
+}
+
+@-webkit-keyframes disRBtnAni {
+  0% {width: 150px; background-color: transparent;}
+  100% {width: 200px; background-color: #ffeb3b; color: black;}
+}
+
+@-moz-keyframes disRBtnAni {
+  0% {width: 150px; background-color: transparent;}
+  100% {width: 200px; background-color: #ffeb3b; color: black;}
+}
+
+@media screen and (min-width: 2400px) {
+  .aniShow {
+    left: 750px;
+  }
+}
+
+
+/* join_kakaotalk 영역 */
+
+.join__ka {
+  position: absolute;
+  top: 300px;
+  left: 500px;
+  text-align: left;
+  font-family: 'BMDOHYEON';
+}
+
+.join__ka a:link, a:visited, a:active, a:hover {
+  color: #ffeb3b;
+  text-decoration: none;
+  border-bottom: 3px solid #ffeb3b;
+}
+
+.ka__items {
+  display: none;
+  opacity: 0;
+}
+
+.jk_span_high {
+  top: -450px;
+  left: 145px;
+  font-size: 3em;
+  position: relative;
+}
+
+.jk_span_low {
+  top: -430px;
+  left: 500px;
+  font-size: 1.5em;
+  position: relative;
+}
+
+.kaShow {
+  display: block;
+  animation: kaShow 0.5s ease-in-out forwards;
+  -webkit-animation: kaShow 0.5s ease-in-out forwards;
+  -moz-animation: kaShow 0.5s ease-in-out forwards;
+}
+
+@keyframes kaShow {
+  0% {opacity: 0;}
+  100% {opacity: 1; display: block;}
+}
+
+
+
+/* ingame 영역 */
+
+.join__ingame {
+  font-family: 'BMDOHYEON';
+}
+
+.ingame__items {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  top: 300px;
+  left: 750px;
+}
+
+.ingame__items:nth-child(2) {
+  position: absolute;
+  top: 200px;
+  left: 1000px;
+}
+
+.ingame__items:nth-child(4) {
+  position: absolute;
+  top: 250px;
+  left: 730px;
+}
+
+.ingame__items:nth-child(5) {
+  position: absolute;
+  top: 230px;
+  left: 780px;
+}
+
+.ingame__items:last-child {
+  position: absolute;
+  top: 230px;
+  left: 900px;
+}
+
+.igShow {
+  display: block;
+  animation: igShow 0.5s ease-in-out 0.5s forwards;
+  -webkit-animation: igShow 0.5s ease-in-out 0.5s forwards;
+  -moz-animation: igShow 0.5s ease-in-out 0.5s forwards;
+}
+
+@keyframes igShow {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.igUnShow {
+  opacity: 1;
+  animation: igUnShow 0.5s ease-in-out forwards;
+  -webkit-animation: igUnShow 0.5s ease-in-out forwards;
+  -moz-animation: igUnShow 0.5s ease-in-out forwards;
+}
+
+@keyframes igUnShow {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+.back_to_first {
+  position: absolute;
+  top: 100px;
+  left: -300px;
+  width: 50px;
+  height: 150px;
+  border: none;
+  vertical-align: bottom;
+  background-color: transparent;
+  color: white;
+  font-size: 2em;
+}
+
+.back_to_first:hover {
+  cursor: pointer;
 }
