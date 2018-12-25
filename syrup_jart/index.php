@@ -1,3 +1,11 @@
+<?php
+$db_host = "localhost";
+$db_user = "sc2syrup";
+$db_passwd = "tmdgml65";
+$db_name = "sc2syrup";
+
+$conn = mysqli_connect($db_host, $db_user, $db_passwd, $db_name);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,20 +15,30 @@
   <title>sc2 SYRUP CLAN</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/fullpage.min.css">
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
 <script>
-
+    var userAgent=navigator.userAgent.toLowerCase();
     var agent = navigator.userAgent.toLowerCase();
     if ( (navigator.appName == 'Netscape' && agent.indexOf('trident') != -1) || (agent.indexOf("msie") != -1)) {
      // ie일 경우
-     alert("이 페이지는 크롬, 오페라, 웨일브라우저에 최적화되어 있습니다.");
+     alert("인터넷익스플로러, 엣지브라우저, 사파리는 지원하지않습니다. 크롬, 오페라, 웨일브라우저에 최적화되어 있습니다.");
    }
+
+   if(userAgent.indexOf('edge')>-1){
+
+	alert("인터넷익스플로러, 엣지브라우저, 사파리는 지원하지않습니다. 크롬, 오페라, 웨일브라우저에 최적화되어 있습니다.");
+
+}
 
   </script>
 </head>
 <body>
   <nav>
     <div class="navImg"><a href="#welcome"><img src="img/bunker.png" alt=""></a></div>
-    <div class="navBoard">+</div>
+    <div class="navBoard"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 18v1h-24v-1h24zm0-6v1h-24v-1h24zm0-6v1h-24v-1h24z" fill="#1040e2"/><path d="M24 19h-24v-1h24v1zm0-6h-24v-1h24v1zm0-6h-24v-1h24v1z"/></svg></div>
     <ul>
       <li><a href="#contentsAnchor"><img src="img/syrup.svg" alt="" width="50px"></a></li>
       <li><a href="#practiceAnchor"><img src="img/game-controller.svg" alt="" width="50px"></a></li>
@@ -30,54 +48,222 @@
   <div class="board boardOpen">
     <div class="board-bg">
       <div class="in-board">
-        <div class="board__title"><span><img src="img/question.svg" width="55px;" />   건의사항</span></div>
+        <div class="board__title"><span><img src="img/question.svg" width="55px;" />   잡담, 기록, 비매너제보</span></div>
           <div class="board__board">
             <table>
               <tr>
-                <th>글번호</th>
-                <th>카테고리</th>
+                <th>No</th>
                 <th style="width: 50%">제목</th>
                 <th>작성자</th>
                 <th>작성일</th>
               </tr>
-              <tr>
-                <td>0</td>
-                <td>건의사항</td>
-                <td>제목</td>
-                <td>작성자</td>
-                <td>작성일</td>
-              </tr>
-              <tr>
-                <td>0</td>
-                <td>건의사항</td>
-                <td>제목</td>
-                <td>작성자</td>
-                <td>작성일</td>
-              </tr>
+                <?php
+
+
+              $sql = "SELECT * FROM ask_board order by bno desc limit 10;";
+
+              if ($result = mysqli_query($conn,$sql)){
+
+
+              while($row = mysqli_fetch_array($result)){
+              echo "<tr>";
+              echo "<td>" . $row['bno'] . "</td>";
+              echo "<td><a id=Bno_". $row['bno'] ." class='bnoValidate' onclick='viewContents(". $row['bno'] .")' >" . htmlspecialchars($row['title']) . "</td>";
+              echo "<td>" . $row['name'] . "</td>";
+              echo "<td>" . $row['date'] . "</td>";
+              echo "</tr>";
+              }
+
+              } else {
+              echo "테이블 쿼리 오류: " . mysqli_error($conn);
+              exit;
+
+              }
+              ?>
             </table><br />
-            <button class="board_write_btn">글쓰기</button>
+            <div class="boardCntSpace">
+              <?php
+              $sql_bno = "SELECT count(bno) FROM ask_board";
+
+              if ($view = mysqli_query($conn,$sql_bno)){
+
+                $resultaa = mysqli_fetch_row($view);
+
+                if($resultaa[0]%10==0) {
+                  $board_cnt = $resultaa[0]/10;
+                }else {
+                  $board_cnt = floor($resultaa[0]/10+1);
+                }
+
+                for($i=$board_cnt; $i>=1; $i--) {
+                  echo "<a onclick='boardPage_cnt(" . $i . ")'>". $i . "&nbsp;&nbsp;</a>";
+                }
+
+                } else {
+                echo "테이블 쿼리 오류: " . mysqli_error($conn);
+                exit;
+                }
+
+               ?>
+               <button class="board_write_btn">글쓰기</button>
+            </div>
+          </div>
+          <div class="board__board board__board2nd displayNone">
+            <table id="board_table">
+              <thead>
+              <tr>
+                <th>No</th>
+                <th style="width: 50%">제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+              </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table><br />
+            <div class="boardCntSpace">
+              <?php
+              $sql_bno = "SELECT count(bno) FROM ask_board";
+
+              if ($view = mysqli_query($conn,$sql_bno)){
+
+                $resultaa = mysqli_fetch_row($view);
+
+                if($resultaa[0]%10==0) {
+                  $board_cnt = $resultaa[0]/10;
+                }else {
+                  $board_cnt = floor($resultaa[0]/10+1);
+                }
+
+                for($i=$board_cnt; $i>=1; $i--) {
+                  echo "<a onclick='boardPage_cnt(" . $i . ")'>". $i . "&nbsp;&nbsp;</a>";
+                }
+
+                } else {
+                echo "테이블 쿼리 오류: " . mysqli_error($conn);
+                exit;
+                }
+
+               ?>
+               <button class="board_write_btn board_write_btn2">글쓰기</button>
+            </div>
           </div>
           <div class="board__write displayNone">
             <table>
-              <form action="dbtext.php" method="post">
+              <form id="writeForm">
               <tr>
                 <td>글 제목</td>
-                <td colspan="3"><input type="text" style="width:750px; height: 30px; background-color: transparent; border:none; border-bottom: 1px solid gray;"></td>
+                <td colspan="3"><input type="text" name="title" id="title" style="width:750px; height: 30px; background-color: transparent; border:none; border-bottom: 1px solid gray;"></td>
               </tr>
               <tr>
                 <td>작성자</td>
-                <td><input type="text" style="width:300px; height: 30px;  background-color: transparent; border:none; border-bottom: 1px solid gray;"></td>
+                <td><input type="text" name="name" id="name" style="width:300px; height: 30px;  background-color: transparent; border:none; border-bottom: 1px solid gray;"></td>
                 <td>비밀번호</td>
-                <td><input type="password" style="width:300px; height: 30px; background-color: transparent; border:none; border-bottom: 1px solid gray;"></td>
+                <td><input type="password" name="password" id="password" style="width:300px; height: 30px; background-color: transparent; border:none; border-bottom: 1px solid gray;"></td>
               </tr>
               <tr>
-                <td colspan="4"><textarea name="" id="" cols="115" rows="30" style="margin-top: 20px; resize: none;"></textarea></td>
+                <td colspan="4"><textarea name="contents" id="contents" cols="115" rows="30" style="margin-top: 20px; resize: none;"></textarea></td>
               </tr>
-            <button type="submit" class="write__action">작성하기</button>
+            <button type="button" class="write__action" onclick="write_submit()">작성하기</button>
             <button type="button" class="write__cancel">취소</button>
             </form>
           </table>
           </div>
+
+          <script>
+            function write_submit() {
+
+              var write_form = $("#writeForm").serialize();
+
+              $.ajax({
+                url : "dbtext.php",
+                data: write_form,
+                type: "post",
+                success : function() {
+                  alert("글을 등록했습니다.");
+                  location.reload();
+                }
+              });
+
+            }
+          </script>
+
+          <div class="board__view displayNone">
+            <table>
+              <tr>
+                <td style="color: #7f8c8d;">제목</td>
+                <td colspan='3'><div name='board_view_Title' class='board_view_Title' style='width:710px; height: 30px; background-color: transparent; border:none; border-bottom: 1px solid gray; text-align: left;'></div></td>
+              </tr>
+              <tr>
+                <td style="color: #7f8c8d;">작성자</td>
+                <td><div name='board_view_name' class='board_view_name' style='width:295px; height: 30px;  background-color: transparent; border:none; border-bottom: 1px solid gray;'></div></td>
+                <td style="color: #7f8c8d;">작성일</td>
+                <td><div name='board_view_date' class='board_view_date' style='width:295px; height: 30px; background-color: transparent; border:none; border-bottom: 1px solid gray;'></div></td>
+              </tr>
+              <tr>
+                <td colspan='4'><div name='board_view_contents' class='board_view_contents' style='margin-top: 20px; overflow:auto; background-color: white; width:800px; height: 500px;'></div></td>
+              </tr>
+            <button type="submit" class="view__modify">수정하기</button>
+            <button type="button" class="view__cancel" onclick="view_list_back()">이전</button>
+          </table>
+          </div>
+
+          <script>
+
+            var boardView = document.querySelector(".board__view");
+            var boardBoard = document.querySelector(".board__board");
+            var pageBoard = document.querySelector(".board__board2nd");
+
+
+            function viewContents(n) {
+              var nn = n;
+              $.ajax({
+                url : "boardView.php",
+                data : {bno : nn},
+                type : "post",
+                success : function(result) {
+                  var dt_random = $.parseJSON(result);
+                  var replaceTitle = dt_random.title.replace("<", "&lt;").replace(">", "&gt;");
+                  var replaceContents = dt_random.contents.replace(/(\n|\r\n)/g, '<br>');
+                  boardView.classList.remove("displayNone");
+                  boardBoard.classList.add("displayNone");
+                  pageBoard.classList.add("displayNone");
+                  $(".board_view_Title").text(replaceTitle);
+                  $(".board_view_name").text(dt_random.name);
+                  $(".board_view_date").text(dt_random.date);
+                  $(".board_view_contents").html(replaceContents);
+                },
+                error : function() {
+                  alert("에러!");
+                }
+              });
+            }
+
+            function view_list_back() {
+              boardView.classList.add("displayNone");
+              boardBoard.classList.remove("displayNone");
+            }
+
+            function boardPage_cnt(n) {
+              $.ajax({
+                url: "boardListCnt.php",
+                data: {listPage : n},
+                type: "post",
+                success: function(result) {
+                  var res = $.parseJSON(result);
+                  pageBoard.classList.remove("displayNone");
+                  boardBoard.classList.add("displayNone");
+                  $('#board_table > tbody:last > tr').remove();
+                  for(var i = 0; i <= res.length; i++) {
+                    $('#board_table > tbody:last').append('<tr><td>'+ res[i].bno+ '</td><td><a id=Bno_'+res[i].bno+' class=bnoValidate onclick=viewContents('+res[i].bno+') >'+ res[i].title.replace("<","&lt;").replace(">", "&gt;") +'</td><td>'+ res[i].name.replace("<","&lt;").replace(">", "&gt;") + '</td><td>'+ res[i].date+ '</td></tr>');
+                }
+                }
+              });
+            }
+          </script>
+
+
+
       </div>
     </div>
   </div>
@@ -87,12 +273,15 @@
     const boardOpen = document.querySelector(".navBoard");
     const boarda = document.querySelector(".board");
     const goWritePage = document.querySelector(".board_write_btn");
+    const goWritePage2 = document.querySelector(".board_write_btn2");
     const writePage = document.querySelector(".board__write");
     const boardListPage = document.querySelector(".board__board");
+    const boardListPage2 = document.querySelector(".board__board2nd");
     const write__cancel = document.querySelector(".write__cancel");
 
     boardOpen.onclick = function() { boardOpened() }
     goWritePage.onclick = function() { WAOpen() }
+    goWritePage2.onclick = function() { WAOpen() }
     write__cancel.onclick = function() { writeCancel() }
 
     function boardOpened() {
@@ -107,6 +296,7 @@
     function WAOpen() {
       writePage.classList.remove("displayNone");
       boardListPage.classList.add("displayNone");
+      boardListPage2.classList.add("displayNone");
     }
 
     function writeCancel() {
@@ -204,7 +394,7 @@
                 <img src="img/galaxy.svg" alt="" width="350%;">
               </div>
             </div>
-            <div class="select__container displayNone">
+            <div class="select__container select__container2 displayNone">
               <div class="select__items edge_select">
                 <img src="img/discord.svg" alt="" width="180%"><br>
               </div>
@@ -421,7 +611,7 @@
 
       var first = document.querySelector(".select__items");
       var container = document.querySelector(".select__container");
-      var noneSelect = document.querySelector(".displayNone");
+      var noneSelect = document.querySelector(".select__container2");
       var none = "displayNone";
 
       if ( (navigator.appName == 'Netscape' && agent.indexOf('trident') != -1) || (agent.indexOf("msie") != -1)) {

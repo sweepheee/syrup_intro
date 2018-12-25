@@ -20,13 +20,32 @@
 <body>
   <nav>
     <div class="navImg"><a href="#welcome"><img src="img/bunker.png" alt=""></a></div>
-    <div class="navBoard">+</div>
+    <div class="navBoard"><span>+</span></div>
     <ul>
       <li><a href="#contentsAnchor"><img src="img/syrup.svg" alt="" width="50px"></a></li>
       <li><a href="#practiceAnchor"><img src="img/game-controller.svg" alt="" width="50px"></a></li>
       <li><a href="#joinAnchor"><img src="img/agreement.svg" alt="" width="50px"></a></li>
     </ul>
   </nav>
+
+  <script>
+    var dnone = "boardOpen";
+    const boardOpen = document.querySelector(".navBoard");
+    const boarda = document.querySelector(".board");
+
+    boardOpen.onclick = function() { boardOpened() }
+
+    function boardOpened() {
+      const currentBoardOpen = document.querySelector(".boardOpen");
+      if(currentBoardOpen){
+        boarda.classList.remove(dnone);
+      }else {
+        boarda.classList.add(dnone);
+      }
+    }
+  </script>
+
+
   <div class="board boardOpen">
     <div class="board-bg">
       <div class="in-board">
@@ -57,63 +76,9 @@
             </table><br />
             <button class="board_write_btn">글쓰기</button>
           </div>
-          <div class="board__write displayNone">
-            <table>
-              <form action="dbtext.php" method="post">
-              <tr>
-                <td>글 제목</td>
-                <td colspan="3"><input type="text" style="width:750px; height: 30px; background-color: transparent; border:none; border-bottom: 1px solid gray;"></td>
-              </tr>
-              <tr>
-                <td>작성자</td>
-                <td><input type="text" style="width:300px; height: 30px;  background-color: transparent; border:none; border-bottom: 1px solid gray;"></td>
-                <td>비밀번호</td>
-                <td><input type="password" style="width:300px; height: 30px; background-color: transparent; border:none; border-bottom: 1px solid gray;"></td>
-              </tr>
-              <tr>
-                <td colspan="4"><textarea name="" id="" cols="115" rows="30" style="margin-top: 20px; resize: none;"></textarea></td>
-              </tr>
-            <button type="submit" class="write__action">작성하기</button>
-            <button type="button" class="write__cancel">취소</button>
-            </form>
-          </table>
-          </div>
       </div>
     </div>
   </div>
-
-  <script>
-    var dnone = "boardOpen";
-    const boardOpen = document.querySelector(".navBoard");
-    const boarda = document.querySelector(".board");
-    const goWritePage = document.querySelector(".board_write_btn");
-    const writePage = document.querySelector(".board__write");
-    const boardListPage = document.querySelector(".board__board");
-    const write__cancel = document.querySelector(".write__cancel");
-
-    boardOpen.onclick = function() { boardOpened() }
-    goWritePage.onclick = function() { WAOpen() }
-    write__cancel.onclick = function() { writeCancel() }
-
-    function boardOpened() {
-      const currentBoardOpen = document.querySelector(".boardOpen");
-      if(currentBoardOpen){
-        boarda.classList.remove(dnone);
-      }else {
-        boarda.classList.add(dnone);
-      }
-    }
-
-    function WAOpen() {
-      writePage.classList.remove("displayNone");
-      boardListPage.classList.add("displayNone");
-    }
-
-    function writeCancel() {
-      writePage.classList.add("displayNone");
-      boardListPage.classList.remove("displayNone");
-    }
-  </script>
 
 <div id="fullpage">
   <div class="wrap section" data-anchor="welcome">
